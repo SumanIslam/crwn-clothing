@@ -14,6 +14,12 @@
       -ms-flex-pack: center;
           justify-content: center;
   margin: 0 7.5px 15px;
+  overflow: hidden;
+}
+
+.menu-item .background-image {
+  width: 100%;
+  height: 100%;
   background-position: center;
   background-size: cover;
 }
@@ -28,6 +34,23 @@
 
 .menu-item:last-child {
   margin-left: 7.5px;
+}
+
+.menu-item:hover {
+  cursor: pointer;
+}
+
+.menu-item:hover .background-image {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: -webkit-transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+  transition: -webkit-transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+  transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+  transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95), -webkit-transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+}
+
+.menu-item:hover .content {
+  opacity: 0.9;
 }
 
 .menu-item .content {
@@ -46,8 +69,12 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border-radius: 3px;
   background-color: white;
   opacity: 0.7;
+  position: absolute;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .menu-item .content .title {
@@ -60,7 +87,7 @@
 
 .menu-item .content .subtitle {
   font-weight: normal;
-  letter-spacing: 1.5;
-  font-size: 20px;
+  letter-spacing: 1.5px;
+  font-size: 18px;
 }
 /*# sourceMappingURL=menu-item.styles.css.map */
