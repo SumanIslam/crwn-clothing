@@ -13,16 +13,12 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },
-  "resolutions": {
-    "postcss": "^8.2.10"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "yarn add -D prettier && yarn add -D babel-eslint && npx install-peerdeps --dev eslint-config-airbnb && yarn add -D eslint-config-prettier eslint-plugin-prettier",
-    "preinstall": "npx npm-force-resolutions"
+    "lint": "yarn add -D prettier && yarn add -D babel-eslint && npx install-peerdeps --dev eslint-config-airbnb && yarn add -D eslint-config-prettier eslint-plugin-prettier"
   },
   "eslintConfig": {
     "extends": [
