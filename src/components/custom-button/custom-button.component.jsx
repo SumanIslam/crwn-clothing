@@ -1,8 +1,8 @@
 import './custom-button.styles.scss';
 
-const CustomButton = ({ children, ...otherProps }) => (
+const CustomButton = ({ children, isGoogleSignIn, ...otherProps }) => (
   // eslint-disable-next-line react/button-has-type
-  <button className="custom-button" {...otherProps}>
+  <button className={`${isGoogleSignIn ? 'google-sign-in' : ''}  custom-button`} {...otherProps}>
     {children}
   </button>
 );
