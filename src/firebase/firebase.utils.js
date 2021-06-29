@@ -23,7 +23,7 @@ export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;
 
-export const createUserProfileDocument = async (userAuth) => {
+export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
 
   const userRef = firestore.doc(`users/${userAuth.uid}`);
@@ -37,6 +37,7 @@ export const createUserProfileDocument = async (userAuth) => {
         email,
         displayName,
         createdAt,
+        ...additionalData,
       });
     } catch (err) {
       console.log('error creating user', err.message);
