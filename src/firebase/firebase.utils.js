@@ -22,3 +22,26 @@ provider.setCustomParameters({ setCustomParameters: 'select_account' });
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;
+
+export const createUserProfileDocument = async (userAuth) => {
+  if (!userAuth) return;
+
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
+  const snapshot = await userRef.get();
+  if (!snapshot.exists) {
+    const { email, displayName } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      await userRef.set({
+        email,
+        displayName,
+        createdAt,
+      });
+    } catch (err) {
+      console.log('error creating user', err.message);
+    }
+  }
+  // eslint-disable-next-line consistent-return
+  return userRef;
+};
