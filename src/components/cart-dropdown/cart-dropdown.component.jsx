@@ -5,18 +5,21 @@ import { toggleCartHidden } from '../../redux/cart/cart.actions';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 import CartItem from '../cart-item/cart-item.component';
 import CustomButton from '../custom-button/custom-button.component';
-import './cart-dropdown.styles.scss';
+import {
+  CartDropdownContainer,
+  CartItemsContainer,
+  EmptyCartMessage,
+} from './cart-dropdown.styles';
 
-// eslint-disable-next-line no-unused-vars
 const CartDropdown = ({ cartItems, history, dispatch }) => (
-  <div className="cart-dropdown">
-    <div className="cart-items">
+  <CartDropdownContainer>
+    <CartItemsContainer>
       {cartItems.length ? (
         cartItems.map((cartItem) => <CartItem key={cartItem.id} item={cartItem} />)
       ) : (
-        <span className="empty-message">Your cart is empty</span>
+        <EmptyCartMessage>Your cart is empty</EmptyCartMessage>
       )}
-    </div>
+    </CartItemsContainer>
     <CustomButton
       inverted
       onClick={() => {
@@ -26,7 +29,7 @@ const CartDropdown = ({ cartItems, history, dispatch }) => (
     >
       GO TO CHECKOUT
     </CustomButton>
-  </div>
+  </CartDropdownContainer>
 );
 
 const mapStateToProps = createStructuredSelector({
