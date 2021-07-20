@@ -21,7 +21,6 @@ const CartDropdown = ({ cartItems, history, dispatch }) => (
       )}
     </CartItemsContainer>
     <CustomButton
-      inverted
       onClick={() => {
         history.push('/checkout');
         dispatch(toggleCartHidden());
