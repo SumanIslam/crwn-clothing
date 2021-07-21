@@ -6,10 +6,9 @@ import CollectionOverview from '../../components/collection-overview/collection-
 const ShopPage = ({ match }) => {
   console.log(match);
   return (
-    <div className="shop-page">
+    <div>
       <Switch>
         <Route exact path={`${match.path}`} component={CollectionOverview} />
-        {/* <Route path={`${match.path}/:collectionId`} component={CollectionPage} /> */}
       </Switch>
     </div>
   );
