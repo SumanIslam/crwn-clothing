@@ -24,7 +24,7 @@ export const signInWithGoogle = () => auth.signInWithPopup(provider);
 export default firebase;
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
-  if (!userAuth) return;
+  if (!userAuth) return undefined;
 
   const userRef = firestore.doc(`users/${userAuth.uid}`);
   const snapshot = await userRef.get();
@@ -43,6 +43,36 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
       console.log('error creating user', err.message);
     }
   }
-  // eslint-disable-next-line consistent-return
+
   return userRef;
+};
+
+export const addCollectionsAndDocuments = async (collectionKey, objectToAdd) => {
+  const collectionRef = firestore.collection(collectionKey);
+  const batch = firestore.batch();
+
+  objectToAdd.forEach((obj) => {
+    const documentRef = collectionRef.doc();
+    batch.set(documentRef, obj);
+    console.log(documentRef);
+  });
+
+  return batch.commit();
+};
+
+export const convertCollectionsSnapshotToMap = (collectionSnapshot) => {
+  const transformedCollection = collectionSnapshot.docs.map((doc) => {
+    const { title, items } = doc.data();
+    return {
+      title,
+      items,
+      id: doc.id,
+      routeName: encodeURI(title.toLowerCase()),
+    };
+  });
+
+  return transformedCollection.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
 };
