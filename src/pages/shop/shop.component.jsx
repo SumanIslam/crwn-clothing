@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
-import CollectionOverview from '../../components/collection-overview/collection-overview.component';
+import { createStructuredSelector } from 'reselect';
+import CollectionPreview from '../../components/collection-preview/collection-preview.component';
 import { convertCollectionsSnapshotToMap, firestore } from '../../firebase/firebase.utils';
 import updateCollections from '../../redux/shop/shop.actions';
+import { selectShopCollectionsForOverview } from '../../redux/shop/shop.selectors';
 
 class ShopPage extends Component {
   unsubscribeFromSnapshot = null;
@@ -19,19 +20,23 @@ class ShopPage extends Component {
   }
 
   render() {
-    const { match } = this.props;
+    const { collections } = this.props;
     return (
-      <div>
-        <Switch>
-          <Route exact path={`${match.path}`} component={CollectionOverview} />
-        </Switch>
-      </div>
+      <shopPageContainer>
+        {collections.map(({ id, ...otherCollectionProps }) => (
+          <CollectionPreview key={id} {...otherCollectionProps} />
+        ))}
+      </shopPageContainer>
     );
   }
 }
+
+const mapStateToProps = createStructuredSelector({
+  collections: selectShopCollectionsForOverview,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   updateCollections: (collections) => dispatch(updateCollections(collections)),
 });
 
-export default connect(null, mapDispatchToProps)(ShopPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ShopPage);
