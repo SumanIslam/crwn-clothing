@@ -1,10 +1,10 @@
 import React from 'react';
 import CollectionItem from '../collection-item/collection-item.component';
-import { PreviewContainer, PreviewTitle, Preview } from './collection-preview.styles';
+import { Preview, PreviewContainer, PreviewTitle } from './collection-preview.styles';
 
 const CollectionPreview = ({ title, items }) => (
   <PreviewContainer>
-    <PreviewTitle>{title}</PreviewTitle>
+    <PreviewTitle to={`shop/${title.toLowerCase()}`}>{title}</PreviewTitle>
     <Preview>
       {items
         .filter((item, idx) => idx < 4)

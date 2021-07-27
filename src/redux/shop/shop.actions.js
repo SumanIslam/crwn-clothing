@@ -5,4 +5,9 @@ const updateCollections = (collections) => ({
   payload: collections,
 });
 
+export const setLoading = (boolean) => ({
+  type: shopActionTypes.SET_LOADING,
+  payload: boolean,
+});
+
 export default updateCollections;
