@@ -10,7 +10,7 @@ import CollectionPageContainer from './pages/collection/collection.container';
 import Homepage from './pages/homepage/homepage.components';
 import ShopPageContainer from './pages/shop/shop.container';
 import SignInAndSignOut from './pages/sign-in-and-sign-out-page/sign-in-and-sign-out-page.component';
-import { fetchCollectionsStartAsync } from './redux/shop/shop.actions';
+import { fetchCollectionsStart } from './redux/shop/shop.actions';
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 
@@ -19,7 +19,7 @@ class App extends React.Component {
 
   componentDidMount() {
     // eslint-disable-next-line no-shadow
-    const { setCurrentUser, fetchCollectionsStartAsync } = this.props;
+    const { setCurrentUser, fetchCollectionsStart } = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
@@ -35,7 +35,7 @@ class App extends React.Component {
       setCurrentUser(userAuth);
     });
 
-    fetchCollectionsStartAsync();
+    fetchCollectionsStart();
   }
 
   componentWillUnmount() {
@@ -70,7 +70,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-  fetchCollectionsStartAsync: () => dispatch(fetchCollectionsStartAsync()),
+  fetchCollectionsStart: () => dispatch(fetchCollectionsStart()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
