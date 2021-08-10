@@ -75,3 +75,11 @@ export const convertCollectionsSnapshotToMap = (collectionSnapshot) => {
     return accumulator;
   }, {});
 };
+
+export const getCurrentUser = () =>
+  new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });

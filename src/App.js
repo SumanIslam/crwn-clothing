@@ -11,14 +11,15 @@ import ShopPageContainer from './pages/shop/shop.container';
 import SignInAndSignOut from './pages/sign-in-and-sign-out-page/sign-in-and-sign-out-page.component';
 import { fetchCollectionsStart } from './redux/shop/shop.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
+import { checkCurrentUser } from './redux/user/user.actions';
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
     // eslint-disable-next-line no-shadow
-    const { fetchCollectionsStart } = this.props;
-
+    const { fetchCollectionsStart, checkCurrentUser } = this.props;
+    checkCurrentUser();
     fetchCollectionsStart();
   }
 
@@ -50,6 +51,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCollectionsStart: () => dispatch(fetchCollectionsStart()),
+  checkCurrentUser: () => dispatch(checkCurrentUser()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
