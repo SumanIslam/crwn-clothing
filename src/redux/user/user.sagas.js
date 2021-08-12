@@ -74,6 +74,6 @@ export function* onSignOut() {
 }
 
 // user saga
-export default function* userSaga() {
+export function* userSagas() {
   yield all([call(onGoogleSignIn), call(onEmailSignIn), call(onCheckUserSession), call(onSignOut)]);
 }
