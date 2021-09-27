@@ -6,8 +6,8 @@ import {
   googleProvider,
 } from '../../firebase/firebase.utils';
 import {
-  signInSuccess,
   signInFailure,
+  signInSuccess,
   signOutFailure,
   signOutSuccess,
   signUpFailure,
@@ -31,6 +31,7 @@ export function* getSnapshotFromUserAuth(user, additionData = null) {
 export function* signInWithGoogle() {
   try {
     const { user } = yield auth.signInWithPopup(googleProvider);
+    console.log(user);
     yield getSnapshotFromUserAuth(user);
   } catch (error) {
     yield put(signInFailure(error));

@@ -6,7 +6,7 @@ import FormInput from '../form-input/form-input.component';
 import { ButtonContainer, SignInContainer } from './sign-in.styles';
 
 // eslint-disable-next-line no-shadow
-const SignIn = ({ emailSignInStart }) => {
+const SignIn = ({ emailSignInStart, googleSignInStart }) => {
   const [userCredential, setCredential] = useState({ email: '', password: '' });
 
   const { email, password } = userCredential;
