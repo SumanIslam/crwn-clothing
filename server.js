@@ -22,7 +22,6 @@ if(process.env.NODE_ENV === 'production') {
 }
 
 app.post('/payment', (req, res) => {
-  console.log(req.body.token);
   const { token, amount } = req.body;
   const idempotencyKey = uuidv4();
   
