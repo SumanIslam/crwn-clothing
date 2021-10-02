@@ -1,2 +1,2 @@
 ## Live Priview
-https://crwn-clothing-preview.herokuapp.com/
+https://crwn-live-preview.herokuapp.com/
