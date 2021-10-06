@@ -9,10 +9,13 @@ export const HeaderContainer = styled.div`
 `;
 
 export const LogoContainer = styled(Link)`
-  height: 70px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+  height: 100%;
+  width: 80px;
+  padding-top: 0.8rem;
+
+  @media screen and (max-width: 800px) {
+    width: 50px;
+  }
 `;
 
 export const OptionsContainer = styled.div`
@@ -27,4 +30,10 @@ export const OptionLink = styled(Link)`
   padding: 10px 15px;
   text-transform: uppercase;
   cursor: pointer;
+
+  @media screen and (max-width: 800px) {
+    &:first-child {
+      margin-left: -7rem;
+    }
+  }
 `;

@@ -1,7 +1,13 @@
 import React from 'react';
+
+// Redux
 import { connect } from 'react-redux';
 import { addItemToCart } from '../../redux/cart/cart.actions';
+
+// Components
 import CustomButton from '../custom-button/custom-button.component';
+
+// styles
 import {
   CollectionFooter,
   CollectionItemContainer,
@@ -19,7 +25,7 @@ const CollectionItem = ({ item, addItemToCart }) => {
       <ImageContainer style={{ backgroundImage: `url(${imageUrl})` }} />
       <CollectionFooter>
         <CollectionName>{name}</CollectionName>
-        <CollectionPrice>{price}</CollectionPrice>
+        <CollectionPrice>${price}</CollectionPrice>
       </CollectionFooter>
       <CustomButtonContainer>
         <CustomButton onClick={() => addItemToCart(item)} inverted>

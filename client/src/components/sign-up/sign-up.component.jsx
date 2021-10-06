@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
+
+// Redux
 import { connect } from 'react-redux';
+import { signUpStart } from '../../redux/user/user.actions';
+
+// Components
 import CustomButton from '../custom-button/custom-button.component';
 import FormInput from '../form-input/form-input.component';
+
+// styles
 import { SignUpContainer } from './sign-up.styles';
-import { signUpStart } from '../../redux/user/user.actions';
 
 // eslint-disable-next-line no-shadow
 const SignUp = ({ signUpStart }) => {

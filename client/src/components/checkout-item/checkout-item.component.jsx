@@ -1,3 +1,6 @@
+import React from 'react';
+
+// Redux
 import { connect } from 'react-redux';
 import {
   addItemToCart,
@@ -5,6 +8,7 @@ import {
   removeItemFromCart,
 } from '../../redux/cart/cart.actions';
 
+// Styles
 import {
   ArrowContainer,
   CheckoutItemContainer,

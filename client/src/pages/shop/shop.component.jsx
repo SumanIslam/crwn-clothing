@@ -1,9 +1,15 @@
 import React from 'react';
+
+// Redux
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import CollectionPreview from '../../components/collection-preview/collection-preview.component';
-import { ShopPageContainer } from './shop.styles';
 import { selectShopCollectionsForPrerview } from '../../redux/shop/shop.selectors';
+
+// Components
+import CollectionPreview from '../../components/collection-preview/collection-preview.component';
+
+// Styles
+import { ShopPageContainer } from './shop.styles';
 
 const ShopPage = ({ collections }) => (
   <ShopPageContainer>

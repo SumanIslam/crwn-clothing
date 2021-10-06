@@ -1,11 +1,19 @@
+import React from 'react';
+
+// Redux
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { ReactComponent as Logo } from '../../assets/crown.svg';
+
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
 import { signOutStart } from '../../redux/user/user.actions';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
+
+// component
+import { ReactComponent as Logo } from '../../assets/crown.svg';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import CartIcon from '../cart-icon/cart-icon.component';
+
+// styles
 import { HeaderContainer, LogoContainer, OptionLink, OptionsContainer } from './header.styles';
 
 // eslint-disable-next-line no-shadow

@@ -16,7 +16,6 @@ export const CustomButtonContainer = styled.div`
 `;
 
 export const CollectionItemContainer = styled.div`
-  width: 22vw;
   display: flex;
   flex-direction: column;
   height: 350px;
@@ -40,6 +39,7 @@ export const CollectionFooter = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 18px;
+  padding: 0 0.4rem 0;
 `;
 
 export const CollectionName = styled.div`

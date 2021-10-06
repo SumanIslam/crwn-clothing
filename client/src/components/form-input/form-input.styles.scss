@@ -31,6 +31,18 @@ $sub-color: grey;
     &:focus ~ .form-input-label {
       @include shrinkLabel();
     }
+
+    @media screen and (max-width: 900px) {
+      width: 90%;
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+
+    @media screen and (max-width: 400px) {
+      width: 90%;
+    }
   }
 
   input[type='password'] {

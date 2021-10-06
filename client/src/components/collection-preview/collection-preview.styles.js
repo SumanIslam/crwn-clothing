@@ -17,6 +17,19 @@ export const PreviewTitle = styled(Link)`
 `;
 
 export const Preview = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+
+  @media screen and (max-width: 1050px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (max-width: 750px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 380px) {
+    grid-template-columns: 1fr;
+  }
 `;

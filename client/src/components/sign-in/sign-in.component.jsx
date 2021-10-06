@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
+
+// Redux
 import { connect } from 'react-redux';
 import { emailSignInStart, googleSignInStart } from '../../redux/user/user.actions';
+
+// Components
 import CustomButton from '../custom-button/custom-button.component';
 import FormInput from '../form-input/form-input.component';
+
+// Styles
 import { ButtonContainer, SignInContainer } from './sign-in.styles';
 
 // eslint-disable-next-line no-shadow

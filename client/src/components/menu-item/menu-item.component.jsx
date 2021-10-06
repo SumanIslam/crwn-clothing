@@ -1,4 +1,7 @@
+import React from 'react';
 import { withRouter } from 'react-router-dom';
+
+// Styles
 import {
   ContentConatiner,
   ImageContainer,

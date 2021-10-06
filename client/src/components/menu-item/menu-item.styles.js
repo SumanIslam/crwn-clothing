@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const ImageContainer = styled.div`
   width: 100%;
@@ -7,15 +7,9 @@ export const ImageContainer = styled.div`
   background-size: cover;
 `;
 
-const large = css`
-  height: 300px;
-`;
-
-const largeStyles = (props) => (props.size ? large : '');
-
 export const MenuItemContainer = styled.div`
   min-width: 30%;
-  height: 240px;
+  height: ${({ size }) => (size ? '300px' : '200px')};
   flex: 1 1 auto;
   display: flex;
   align-items: center;
@@ -23,8 +17,6 @@ export const MenuItemContainer = styled.div`
   margin: 0 7.5px 15px;
   overflow: hidden;
 
-  ${largeStyles}
-  
   &:first-child {
     margin-right: 7.5px;
   }
@@ -44,6 +36,11 @@ export const MenuItemContainer = styled.div`
     & .content {
       opacity: 0.9;
     }
+  }
+
+  @media screen and (max-width: 800px) {
+    height: ${({ size }) => (size ? '200px' : '200px')};
+  }
 `;
 
 export const ContentConatiner = styled.div`

@@ -55,4 +55,11 @@ export const CustomButtonContainer = styled.button`
   cursor: pointer;
   transition: all 0.3s ease-in;
   ${getButtonStyles}
+
+  @media screen and (max-width: 485px) {
+    min-width: 170px;
+  }
+  @media screen and (max-width: 380px) {
+    min-width: 250px;
+  }
 `;

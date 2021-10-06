@@ -1,8 +1,16 @@
+import React from 'react';
+
+// Redux
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
+
 import { toggleCartHidden } from '../../redux/cart/cart.actions';
 import { selectCartItemsCount } from '../../redux/cart/cart.selectors';
+
+// components or assets
+import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
+
+// styles
 import { CartIconContainer, ShoppingIconContainer, ItemCount } from './cart-icon.styles';
 
 // eslint-disable-next-line no-shadow
