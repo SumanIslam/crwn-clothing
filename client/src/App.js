@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 
 // Redux
 import { connect } from 'react-redux';
@@ -11,14 +11,22 @@ import { selectCurrentUser } from './redux/user/user.selectors';
 
 // components
 import Header from './components/header/header.component';
-import CheckoutPage from './pages/checkout/checkout.component';
-import CollectionPageContainer from './pages/collection/collection.container';
-import Homepage from './pages/homepage/homepage.components';
-import ShopPageContainer from './pages/shop/shop.container';
-import SignInAndSignOut from './pages/sign-in-and-sign-out-page/sign-in-and-sign-out-page.component';
+import Spinner from './components/spinner/spinner.component';
+
+// Error boundary Component
+import ErrorBoundary from './components/error-boundary/error-boundary.component';
 
 // styles
 import { GlobalStyles } from './global.styles';
+
+// Lazy loaded Components
+const HomePage = lazy(() => import('./pages/homepage/homepage.components'));
+const ShopPageContainer = lazy(() => import('./pages/shop/shop.container'));
+const SignInAndSignOutPage = lazy(() =>
+  import('./pages/sign-in-and-sign-out-page/sign-in-and-sign-out-page.component')
+);
+const CollectionPageContainer = lazy(() => import('./pages/collection/collection.container'));
+const CheckoutPage = lazy(() => import('./pages/checkout/checkout.component'));
 
 // eslint-disable-next-line no-shadow
 const App = ({ fetchCollectionsStart, checkCurrentUser, currentUser }) => {
@@ -32,15 +40,19 @@ const App = ({ fetchCollectionsStart, checkCurrentUser, currentUser }) => {
       <GlobalStyles />
       <Header />
       <Switch>
-        <Route exact path="/" component={Homepage} />
-        <Route exact path="/shop" component={ShopPageContainer} />
-        <Route exact path="/shop/:collectionId" component={CollectionPageContainer} />
-        <Route exact path="/checkout" component={CheckoutPage} />
-        <Route
-          exact
-          path="/signin"
-          render={() => (currentUser ? <Redirect to="/" /> : <SignInAndSignOut />)}
-        />
+        <ErrorBoundary>
+          <Suspense fallback={<Spinner />}>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/shop" component={ShopPageContainer} />
+            <Route exact path="/shop/:collectionId" component={CollectionPageContainer} />
+            <Route exact path="/checkout" component={CheckoutPage} />
+            <Route
+              exact
+              path="/signin"
+              render={() => (currentUser ? <Redirect to="/" /> : <SignInAndSignOutPage />)}
+            />
+          </Suspense>
+        </ErrorBoundary>
       </Switch>
     </div>
   );
