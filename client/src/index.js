@@ -7,6 +7,7 @@ import App from './App';
 import './index.css';
 import { store, persistor } from './redux/store';
 import reportWebVitals from './reportWebVitals';
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -18,6 +19,8 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
+serviceWorker.register();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
