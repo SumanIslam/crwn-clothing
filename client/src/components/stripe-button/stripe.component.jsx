@@ -15,7 +15,7 @@ const StripeCheckoutButton = ({ price }) => {
   const onToken = (token) => {
     console.log(token);
     axios({
-      url: 'http://localhost:5000/payment',
+      url: 'https://crwn-live-preview.herokuapp.com/payment',
       method: 'post',
       data: {
         amount: priceForStripe,
