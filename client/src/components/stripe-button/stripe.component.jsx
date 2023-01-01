@@ -13,7 +13,6 @@ const StripeCheckoutButton = ({ price }) => {
     'pk_test_51JEAs0SEmqan8qXQS287haIuCZJNDYfzZXFlpqvndZHzjZLjOISZCPxmN3AYe9jqb4X9B6Y4YHQONlvJGlXlMBS700Buh2JB9i';
 
   const onToken = (token) => {
-    console.log(token);
     axios({
       url: 'http://localhost:5001/payment',
       method: 'post',
