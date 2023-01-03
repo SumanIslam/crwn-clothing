@@ -14,7 +14,8 @@ const StripeCheckoutButton = ({ price }) => {
 
   const onToken = (token) => {
     axios({
-      url: 'http://localhost:5001/payment',
+      url: 'https://crwnclothingserver.onrender.com/payment',
+      // url: 'http://localhost:5001/payment',
       method: 'post',
       data: {
         amount: priceForStripe,
@@ -24,7 +25,7 @@ const StripeCheckoutButton = ({ price }) => {
       // eslint-disable-next-line no-unused-vars
       .then((res) => {
         // eslint-disable-next-line no-alert
-        alert('payment successful');
+        alert('payment success');
       })
       .catch((err) => {
         console.log('payment Error: ', err);
@@ -34,18 +35,20 @@ const StripeCheckoutButton = ({ price }) => {
   };
 
   return (
-    <StripeCheckout
-      name="CRAWN CLOTHING Ltd."
-      label="pay now"
-      shippingAddress
-      billingAddress
-      image={svg}
-      description={`your total is $${price}`}
-      amount={priceForStripe}
-      stripeKey={publishableKey}
-      panelLabel="pay now"
-      token={onToken}
-    />
+    <>
+      <StripeCheckout
+        name="CRAWN CLOTHING Ltd."
+        label="pay now"
+        shippingAddress
+        billingAddress
+        image={svg}
+        description={`your total is $${price}`}
+        amount={priceForStripe}
+        stripeKey={publishableKey}
+        panelLabel="pay now"
+        token={onToken}
+      />
+    </>
   );
 };
 
