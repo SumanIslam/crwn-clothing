@@ -1,7 +1,7 @@
 import React from 'react';
 
 // dependencies
-import axios from 'axios';
+// import axios from 'axios';
 
 // Component or Assets
 import StripeCheckout from 'react-stripe-checkout';
@@ -12,26 +12,29 @@ const StripeCheckoutButton = ({ price }) => {
   const publishableKey =
     'pk_test_51JEAs0SEmqan8qXQS287haIuCZJNDYfzZXFlpqvndZHzjZLjOISZCPxmN3AYe9jqb4X9B6Y4YHQONlvJGlXlMBS700Buh2JB9i';
 
-  const onToken = (token) => {
-    axios({
-      url: 'https://crwnclothingserver.onrender.com/payment',
-      // url: 'http://localhost:5001/payment',
-      method: 'post',
-      data: {
-        amount: priceForStripe,
-        token,
-      },
-    })
-      // eslint-disable-next-line no-unused-vars
-      .then((res) => {
-        // eslint-disable-next-line no-alert
-        alert('payment success');
-      })
-      .catch((err) => {
-        console.log('payment Error: ', err);
-        // eslint-disable-next-line no-alert
-        alert('There was an issue with your payment. Please sure to use your credit card');
-      });
+  const onToken = () => {
+    // axios({
+    //   url: 'https://crwnclothingserver.onrender.com/payment',
+    //   // url: 'http://localhost:5001/payment',
+    //   method: 'post',
+    //   data: {
+    //     amount: priceForStripe,
+    //     token,
+    //   },
+    // })
+    //   // eslint-disable-next-line no-unused-vars
+    //   .then((res) => {
+    //     // eslint-disable-next-line no-alert
+    //     alert('payment success');
+    //   })
+    //   .catch((err) => {
+    //     console.log('payment Error: ', err);
+    //     // eslint-disable-next-line no-alert
+    //     alert('There was an issue with your payment. Please sure to use your credit card');
+    //   });
+    setTimeout(() => {
+      alert('Payment Success');
+    }, 1000);
   };
 
   return (
